@@ -1,15 +1,22 @@
 @import 'grid';
 @import url(https://fonts.googleapis.com/css?family=Oleo+Script:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+
 $cor-destaque: #FF5722;
 $cor-primaria: #03A9F4;
 $bg-topo: #f6f6f6;
 $font-destaque: 'Oleo Script', cursive;
+$font: 'Roboto', sans-serif;
 
 
 
 *{
 	margin:0;
 	padding:0;
+}
+
+body{
+	font-family: $font;
 }
 
 .logo{
@@ -29,13 +36,40 @@ img{
 }
 
 header{
+	position:fixed;
+	top:0;
+	width:100%;
 	padding-top:10px;
 	background-color: $bg-topo;
 	border-bottom:1px solid #ddd;
 	min-height:40px;
+	z-index:99;
 	margin-bottom:65px;
 	box-shadow:1px 1px 1px #ddd;
 }
+
+.menu{
+	text-align:right;
+	ul{
+		padding:0;
+		margin:0;
+		li{
+			list-style:none;
+			display:inline-block;
+			margin-left:15px;
+			a{
+				color:$cor-destaque;
+				text-decoration:none;
+				font-size:16px;
+			}
+		}
+	}
+}
+
+main{
+	margin-top:120px;
+}
+
 .post{
 	position:relative;
 	figure{
@@ -44,14 +78,7 @@ header{
 		img{
 			height:320px;
 			border:1px solid #ccc;
-			-webkit-filter: grayscale(1);
-					filter: grayscale(1);
-			  transition: all 0.2s ease-in-out;
-		
-			&:hover{
-				-webkit-filter: grayscale(0);
-						filter: grayscale(0);
-			}
+			
 		}
 	}
 
