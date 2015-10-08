@@ -82,20 +82,9 @@ $(document).ready(function(){
 		$.ajax({
 		  url: url,
 		  dataType: "jsonp",
-		  success: function (resp) {
-		  	console.log(resp);
-		    console.log('ID BUSCA: '+resp[0]['id']);
-	    	idBuscar = resp[0]['id'];
-	    	otherurl = otherfotos.replace('${user_id}',idBuscar);
-
-	    		$.ajax({
-				  url: otherurl,
-				  dataType: "jsonp",
-				  success: function (resp2) {
-				    	console.log('amigo.....')
-			    		console.log(resp2);
-				  }
-				});
+		  success: function (data) {
+	    	console.log('Data---> '+data['data'])
+	    		
 		  }
 		});
 
