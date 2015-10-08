@@ -9,6 +9,7 @@ $(document).ready(function(){
 
 	if(token)
 	{
+		page = 'feed'
 		$('#logar').hide();
 		carregarFeed(myfeed,true);
 	}else{
@@ -60,7 +61,7 @@ $(document).ready(function(){
 		  dataType: "jsonp",
 		  success: function (data) {
 		    data = data['data'];
-		    username = data['username'];
+		    username = '@'+data['username'];
 		    if(url === myinfos){
 		    	user_id = data['id'];
 				$('#user_id').val(user_id);
@@ -104,9 +105,9 @@ $(document).ready(function(){
 			console.log(profile_picture);
 		$('#profile_picture').attr('src',profile_picture);
 
-		$('#fotos').text(fotos+' publicações');
-		$('#seguidores').text(seguidores+' seguidores');
-		$('#seguindo').text('Seguindo '+seguindo);
+		$('#fotos').html('<strong>'+fotos+'</strong> publicações');
+		$('#seguidores').html('<strong>'+seguidores+'</strong> Seguidores');
+		$('#seguindo').html('Seguindo <strong>'+seguindo+'</strong>');
 		$('#perfil').addClass('animated fadeInDown');
 	}
 
@@ -291,8 +292,7 @@ $(document).ready(function(){
 		html = html.replace('${linkImagem}',post['images']['standard_resolution']['url']);
 		html = html.replace('${link}',post['link']);
 		html = html.replace('${compartilharLink}',post['link']);
-		html = html.replace('${compartilharDescricao}',post['caption']['text']);
-		html = html.replace('${compartilharTitle}',post['caption']['text']);
+		
 		html = html.replace('${compartilharImagem}',post['images']['standard_resolution']['url']);
 		html = html.replace('${likes}',post['likes']['count']);
 		$('#photos').append(html);

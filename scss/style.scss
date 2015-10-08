@@ -52,6 +52,10 @@ header{
 	box-shadow:1px 1px 1px #ddd;
 }
 
+#photos{
+	margin-top:10px;
+}
+
 .search{
 		position:relative;
 		input{
@@ -70,7 +74,7 @@ header{
 		  position: absolute;
 		  max-height: 350px;
 		  overflow-y: scroll;
-		  width: 70%;
+		  width: 100%;
 		  li{
 		  	list-style:none;
 		  	border-bottom:1px solid #ccc;
@@ -100,18 +104,20 @@ header{
 			@media only screen and (max-width: 768px) {
 				margin-left:0%;
 			}
-			margin-left:50%;
+			
 			border-radius:50%;
 		}
 	}
 
 	.details{
-		text-align:left;
-
-
 		#username{
 			font-weight:300;
 			font-size:34px;
+		}
+
+		span{
+			display:inline-block;
+			margin-right:15px;
 		}
 
 		#full_name{
@@ -145,8 +151,10 @@ header{
 }
 
 main{
-	margin-top:120px;
+	margin-top:70px;
 }
+
+
 
 .post{
 	&.col{
