@@ -17,7 +17,9 @@
 					</div>
 					<div class="col md-3">
 						<div class="search">
-							<input type="search">
+
+							<input id="busca" type="search">
+							<button id="buscar">buscar</button>
 						</div>
 					</div>
 
@@ -25,7 +27,13 @@
 						<div class="menu">
 							<ul>
 								<li><a href="#!">Adicionar</a></li>
+
 								<li><a href="https://instagram.com/oauth/authorize/?client_id=73cac3debac843d48323c7055bfc12e2&redirect_uri=http://mjsjunior.github.io/galeria&response_type=token">Logar</a></li>
+
+
+								<li><a href="#!" id="menuFeed">Meu feed</a></li>
+								<li><a href="#!" id="menuPerfil">Minhas fotos</a></li>
+
 							</ul>
 						</div>
 					</div>
@@ -39,20 +47,22 @@
 		<main>
 			<section id="perfil">
 				<div class="photo">
-					
+					<img id="profile_picture" src="" alt="">
 				</div>
 				<div class="details">
-					<h2>Juninhown</h2>
-					<h3>Maurício José da Silva</h3>
+					<h2 id="username"></h2>
+					<h3 id="full_name"></h3>
 					<p>
-					<span>60 publicações</span>
-					<span>208 seguidores</span>
-					<span></span></p>
+						<span id="fotos"></span> <br />
+						<span id="seguidores"></span><br />
+						<span id="seguindo"></span><br />
+						<input type="hidden" id="user_id" value="">
+					</p>
 				</div>
 			</section>
 			<section id="photos">
 				
-				<div class="post col md-3">
+				 <!-- <div class="post col md-3">
 					<figure>
 					  	<a href="http://google.com.br">
 							<img class="responsive" src="http://unitegallery.net/newimages/image24.jpg" alt="">
@@ -61,7 +71,7 @@
 					<div class="caption">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum similique incidunt, rem libero, pariatur officiis!</p>
 					</div>
-				</div>
+				</div> -->
 
 			</section>
 		</main>
