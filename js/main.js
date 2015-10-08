@@ -13,12 +13,47 @@ $(document).ready(function(){
 
 	myfeed = api+'/users/self/feed?access_token='+token;
 
-	$.get(myfeed,function(data){
-		console.log(data);
-	})
-	alert(myfeed)
 
 
+	function addPost(post){
+		var html = '<div class="post col md-3">'+
+					'<a href="${link}">'+
+						'<figure>'+
+							'<img class="responsive" src="${linkImagem}" alt="">'+
+						'</figure>'+
+					'</a>'
+					'<div class="caption">'+
+						'<p>${caption}</p>'+
+					'</div>'+
+				'</div>';
+
+		html = html.replace('${linkImagem}',post['images']['low_resolution']['url']);
+		html = html.replace('${caption}',post['caption']['text']);
+		html = html.replace('${link}',post['link']);
+		$('#photos').append(html);
+	}
+
+
+
+
+
+
+
+
+
+	$.ajax({
+		  url: myfeed,
+		  dataType: "jsonp",
+		  success: function (data) {
+		    posts = data['data'];
+		    for(i = 0;i<posts.length;i++)
+		    {
+		    		addPost(posts[i]);
+		    	
+		    	//$('#photos').append('<img style="'+style+'" src="'+posts[i]['images']['low_resolution']['url']+'" /> <br />');
+		    }
+		  }
+		});
 
 
 })

@@ -1,0 +1,33 @@
+.clearfix{
+	clear:both;
+}
+
+.container{
+	margin: 0 10%;
+	&:before{
+		@extend .clearfix;
+	}
+}
+
+.row{
+	&:before{
+		@extend .clearfix;
+	}
+}
+
+
+.col{
+	float:left;
+	&.md-3{
+		margin:1% 0.5%;
+		width:33.33% - 6%;
+		
+		&:nth-child(3n+4){
+			@extend .clearfix;
+		}
+	}
+
+
+}
+
+
