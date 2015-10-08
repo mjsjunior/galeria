@@ -8,40 +8,64 @@
 <body>
 	<header>
 		<nav>
-			<div class="logo">
-				
-			</div>
-			<div class="search">
-				
-			</div>
-			<div class="menu">
-				<ul>
-					<li><a href="#!">Adicionar</a></li>
-				</ul>
+			<div class="container">
+				<div class="row">
+					<div class="col md-3">
+						<div class="logo">
+							<span>Estragram</span>
+						</div>
+					</div>
+					<div class="col md-3">
+						<div class="search">
+							<input type="search">
+						</div>
+					</div>
+
+					<div class="col md-3">
+						<div class="menu">
+							<ul>
+								<li><a href="#!">Adicionar</a></li>
+								<li><a href="https://instagram.com/oauth/authorize/?client_id=73cac3debac843d48323c7055bfc12e2&redirect_uri=http://localhost:8000/&response_type=token">Logar</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+
 			</div>
 		</nav>
 	</header>
-
-	<main>
-		<section id="perfil">
-			<div class="photo">
+	<div class="container">
+		<main>
+			<section id="perfil">
+				<div class="photo">
+					
+				</div>
+				<div class="details">
+					<h2>Juninhown</h2>
+					<h3>Maurício José da Silva</h3>
+					<p>
+					<span>60 publicações</span>
+					<span>208 seguidores</span>
+					<span></span></p>
+				</div>
+			</section>
+			<section id="photos">
 				
-			</div>
-			<div class="details">
-				<h2>Juninhown</h2>
-				<h3>Maurício José da Silva</h3>
-				<p>
-				<span>60 publicações</span>
-				<span>208 seguidores</span>
-				<span></span></p>
-			</div>
-		</section>
-		<section id="photos">
-			<figure>
-				<img src="" alt="">
-			</figure>
-		</section>
-	</main>
+				<div class="post col md-3">
+					<figure>
+					  	<a href="http://google.com.br">
+							<img class="responsive" src="http://unitegallery.net/newimages/image24.jpg" alt="">
+						</a>
+					</figure>
+					<div class="caption">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum similique incidunt, rem libero, pariatur officiis!</p>
+					</div>
+				</div>
+
+			</section>
+		</main>
+	</div>
 
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="js/main.js"></script>
