@@ -7,10 +7,14 @@
 	&:before{
 		@extend .clearfix;
 	}
+
+	@media only screen and (max-width: 1000px) {
+			margin:0.5%;
+	    }
 }
 
 .row{
-	&:before{
+	&:after{
 		@extend .clearfix;
 	}
 }
@@ -19,13 +23,46 @@
 .col{
 	float:left;
 	&.md-3{
-		margin:1% 0.5%;
-		width:33.33% - 6%;
+		width:33.33%;
 		
 		&:nth-child(3n+4){
 			@extend .clearfix;
 		}
+
+
+		@media only screen and (max-width: 768px) {
+			margin:0.5%;
+			width:50% - 2% !important;
+
+			&:nth-child(3n+4){
+				clear:none;
+			}
+			&:nth-child(2n+3):after{
+				clear:both;
+			}
+	    }
+
+		@media only screen and (max-width: 500px) {
+			margin:0.5%;
+			width:100% - 2% !important;
+
+			&:nth-child(3n+4){
+				clear:none;
+			}
+			&:nth-child(2n+3):after{
+				clear:both;
+			}
+	    }
 	}
+
+
+	&.md-2{
+		margin:1% 0.5%;
+		width:50% - 1%;
+	}
+
+
+
 
 
 }
