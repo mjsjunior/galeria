@@ -28,6 +28,10 @@ body{
 	font-size:30px;
 	margin-top:-7px;
 	font-family: $font-destaque;
+	@media only screen and (max-width: 768px) {
+		text-align:center;
+	}
+
 }
 
 
@@ -52,8 +56,15 @@ header{
 	box-shadow:1px 1px 1px #ddd;
 }
 
+#photos{
+	margin-top:10px;
+}
+
 .search{
 		position:relative;
+		@media only screen and (max-width: 768px) {
+		text-align:center;
+	}
 		input{
 			background: url(../imagens/search.png) no-repeat scroll 7px 7px;
 			  padding-left: 30px;
@@ -70,7 +81,7 @@ header{
 		  position: absolute;
 		  max-height: 350px;
 		  overflow-y: scroll;
-		  width: 70%;
+		  width: 100%;
 		  li{
 		  	list-style:none;
 		  	border-bottom:1px solid #ccc;
@@ -95,23 +106,34 @@ header{
 
 #perfil{
 	.profile_picture{
-		text-align:center;
+		text-align: right;
+  margin-right: 94px;
 		img{
 			@media only screen and (max-width: 768px) {
 				margin-left:0%;
 			}
-			margin-left:50%;
+			
 			border-radius:50%;
 		}
 	}
 
 	.details{
-		text-align:left;
 
-
+		@media only screen and (max-width: 500px) {
+			text-align:center;	
+		}
 		#username{
 			font-weight:300;
 			font-size:34px;
+			@media only screen and (max-width: 500px) {
+				font-size:28px;	
+
+			}
+		}
+
+		span{
+			display:inline-block;
+			margin-right:15px;
 		}
 
 		#full_name{
@@ -128,6 +150,10 @@ header{
 
 .menu{
 	text-align:right;
+	@media only screen and (max-width: 768px) {
+		text-align:center;
+		padding:15px 0;
+	}
 	ul{
 		padding:0;
 		margin:0;
@@ -145,8 +171,13 @@ header{
 }
 
 main{
-	margin-top:120px;
+	margin-top:70px;
+	@media only screen and (max-width: 768px) {
+					margin-top:140px;
+			}
 }
+
+
 
 .post{
 	&.col{
