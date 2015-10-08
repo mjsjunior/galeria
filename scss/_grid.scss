@@ -59,6 +59,13 @@
 	&.md-2{
 		margin:1% 0.5%;
 		width:50% - 1%;
+
+		@media only screen and (max-width: 500px) {
+			width:100% - 1%;
+			
+
+		}
+
 	}
 
 

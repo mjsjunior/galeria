@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	new WOW().init();
+	
 	var pathname = window.location.pathname; // Returns path only
 	var url      = window.location.href;     // Returns full URL
 
@@ -278,7 +280,7 @@ $(document).ready(function(){
 
 
 	function addPost(post){
-		var html = '<div class="post col md-3 fadeInUp animated">'+
+		var html = '<div class="post col md-3 fadeInUp animated wow">'+
 					'<a href="${link}">'+
 						'<figure>'+
 							'<img class="responsive" src="${linkImagem}" alt="">'+
