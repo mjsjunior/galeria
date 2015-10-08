@@ -71,7 +71,7 @@ $(document).ready(function(){
 	});
 
 	$('#menuPerfil').click(function(){
-		carregarFotos();
+		carregarFotos(api+'/users/'+user_id+'/media/recent/?access_token='+token);
 	})
 
 	$('#buscar').click(function(){
@@ -84,18 +84,11 @@ $(document).ready(function(){
 		  dataType: "jsonp",
 		  success: function (resp) {
 		  	console.log(resp);
-		    console.log('ID BUSCA: '+resp[0]['id']);
-	    	idBuscar = resp[0]['id'];
+		    console.log('ID BUSCA: '+resp['data'][0]['id']);
+	    	idBuscar = resp['data'][0]['id'];
 	    	otherurl = otherfotos.replace('${user_id}',idBuscar);
 
-	    		$.ajax({
-				  url: otherurl,
-				  dataType: "jsonp",
-				  success: function (resp2) {
-				    	console.log('amigo.....')
-			    		console.log(resp2);
-				  }
-				});
+	    		carregarFotos(otherurl);
 		  }
 		});
 
@@ -112,7 +105,7 @@ $(document).ready(function(){
 		$('#profile_picture').attr('src',profile_picture);
 		$('#fotos').text(fotos+' publicações');
 		$('#seguidores').text(seguidores+' seguidores');
-		$('#seguindo').text('seguindo '+seguindo);
+		$('#seguindo').text('Seguindo '+seguindo);
 	}
 
 	function carregarFeed(url){
@@ -130,9 +123,10 @@ $(document).ready(function(){
 		});
 	}
 
-	function carregarFotos(){
+	function carregarFotos(url){
+		$('#photos').empty();
 		$.ajax({
-		  url: myprofile = api+'/users/'+user_id+'/media/recent/?access_token='+token,
+		  url: url,
 		  dataType: "jsonp",
 		  success: function (data) {
 		    posts = data['data'];
@@ -154,15 +148,48 @@ $(document).ready(function(){
 						'</figure>'+
 					'</a>'+
 					'<div class="caption">'+
-						'<p>${caption}</p>'+
-					'</div>'+
+						'<p> <i class="fa fa-heart"></i> ${likes} <br />'+
+						'<i class="fa fa-facebook-official"></i><span class="fb-share-button" data-href="${compartilhar}" data-layout="link"></span>'+
+					'</p>'+
 				'</div>';
-		html = html.replace('${linkImagem}',post['images']['low_resolution']['url']);
-		html = html.replace('${caption}',post['caption']['text']);
+		html = html.replace('${linkImagem}',post['images']['standard_resolution']['url']);
+		//html = html.replace('${caption}',post['caption']['text']);
 		html = html.replace('${link}',post['link']);
+		html = html.replace('${compartilhar}',post['link']);
+		html = html.replace('${likes}',post['likes']['count']);
 		$('#photos').append(html);
-	}
 
+
+		(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5&appId=272021399674737";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	}
+/*/*function addPost(post){
+		var html = '<div class="post col md-3">'+
+					'<a href="${link}">'+
+						'<figure>'+
+							'<img class="responsive" src="${linkImagem}" alt="">'+
+						'</figure>'+
+					'</a>'+
+					'<div class="caption">'+
+						'<p> <i class="fa fa-heart"></i> ${likes} <br />'+
+						'<i class="fa fa-facebook-official"></i> <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=${compartilharLink}&p[images][0]=${compartilharImagem}&p[title]=${compartilharTitle}&p[summary]=${compartilharDescricao}"> Compartilhar </a>'+
+					'</p>'+
+				'</div>';
+		html = html.replace('${linkImagem}',post['images']['standard_resolution']['url']);
+		html = html.replace('${link}',post['link']);
+		html = html.replace('${compartilharLink}',post['link']);
+		html = html.replace('${compartilharDescricao}',post['caption']['text']);
+		html = html.replace('${compartilharTitle}',post['caption']['text']);
+		html = html.replace('${compartilharImagem}',post['images']['standard_resolution']['url']);
+		html = html.replace('${likes}',post['likes']['count']);
+		$('#photos').append(html);
+
+	}*/
 	
 
 
