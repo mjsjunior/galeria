@@ -280,6 +280,13 @@ $(document).ready(function(){
 
 
 	function addPost(post){
+
+
+		/*
+
+			
+
+		*/
 		var html = '<div class="post col md-3 fadeInUp animated wow">'+
 					'<a href="${link}">'+
 						'<figure>'+
@@ -291,13 +298,34 @@ $(document).ready(function(){
 						'<i class="fa fa-facebook-official"></i> <a class="fb-share" href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=${compartilharLink}&p[images][0]=${compartilharImagem}&p[title]=${compartilharTitle}&p[summary]=${compartilharDescricao}"> Compartilhar </a>'+
 					'</p>'+
 				'</div>';
-		html = html.replace('${linkImagem}',post['images']['standard_resolution']['url']);
-		html = html.replace('${link}',post['link']);
-		html = html.replace('${compartilharLink}',post['link']);
+
+
+		var htmlVideo = '<div class="post col md-3 fadeInUp animated wow">'+
+					''+
+						'<video style="width:100%;height:auto;" controls loop>'+
+							  '<source src="${linkVideo}" type="video/mp4">'+
+							'Your browser does not support the video tag.'+
+							'</video>'+
+					''+
+					''+
+				'</div>';
+
+
+
+		if(post['type'] == 'video')
+		{
+			htmlVideo = htmlVideo.replace('${linkVideo}',post['videos']['standard_resolution']['url']);
+			$('#photos').append(htmlVideo);
+		}else{
+			html = html.replace('${linkImagem}',post['images']['standard_resolution']['url']);
+			html = html.replace('${link}',post['link']);
+			html = html.replace('${compartilharLink}',post['link']);
+			
+			html = html.replace('${compartilharImagem}',post['images']['standard_resolution']['url']);
+			html = html.replace('${likes}',post['likes']['count']);
+			$('#photos').append(html);
+		}
 		
-		html = html.replace('${compartilharImagem}',post['images']['standard_resolution']['url']);
-		html = html.replace('${likes}',post['likes']['count']);
-		$('#photos').append(html);
 	}
 	
 
